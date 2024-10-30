@@ -4,7 +4,6 @@ import SearchIcon from '@mui/icons-material/Search';
 
 export const AutoCompleteInput = ({data,setInput, placeholder}) => {
 
-    console.log(placeholder+" "+data)
 
     
   

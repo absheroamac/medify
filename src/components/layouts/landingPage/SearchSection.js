@@ -12,10 +12,13 @@ import Hospitals from '../../../assets/Hospital.png'
 import MedicalStore from '../../../assets/Drugstore.png'
 import Ambulance from '../../../assets/Ambulance.png'
 import zIndex from '@mui/material/styles/zIndex';
+import { useNavigate } from 'react-router-dom';
 
 const CardData = [{title:"Doctors",icon:Doctors},{title:"Labs",icon:Labs},{title:"Hospitals",icon:Hospitals},{title:"Medical Store",icon:MedicalStore},{title:"Ambulance",icon:Ambulance}]
 
 export const SearchSection = () => {
+
+const navigate = useNavigate()
 
 const [activeCard,setActiveCard] = useState("");
 const [cityList,setCityList] = useState([]);
@@ -27,12 +30,16 @@ const searchIcon = <SearchIcon style={{ color: 'white' }} />
 const GET_STATE_URL = "https://meddata-backend.onrender.com/states"
 const GET_CITY_URL = `https://meddata-backend.onrender.com/cities/${state}`
 
+const handleSearch = ()=>{
+  navigate(`/search/${state}/${city}`);
+}
+
 useEffect(()=>{
 
 const apiRequest = async ()=>{
     axios.get(GET_STATE_URL)
   .then(function (response) {
-    console.log(response.data);
+   
     setStateList(response.data);
   })
   .catch(function (error) {
@@ -49,7 +56,7 @@ useEffect(()=>{
     const apiRequest = async ()=>{
         axios.get(GET_CITY_URL)
       .then(function (response) {
-        console.log(response.data);
+        
         setCityList(response.data);
       })
       .catch(function (error) {
@@ -72,7 +79,7 @@ useEffect(()=>{
         <Box display={'flex'} justifyContent={'center'} gap={3} zIndex={1}>
             <AutoCompleteInput data={stateList} placeholder={"State"} setInput={setState}/>
             <AutoCompleteInput data={cityList} placeholder={"City"} setInput={setCity}/>
-            <Button variant={"lg"} content={"Search"} icon={searchIcon}/>
+            <Button variant={"lg"} content={"Search"} icon={searchIcon} handle={handleSearch}/>
         </Box>
 
         <Box zIndex={1} display={'flex'} gap={4} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} width={'100%'}>

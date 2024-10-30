@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '@mui/material/styles';
 
-export const Button = ({content,link,variant,icon,textSize}) => {
+export const Button = ({content,link,variant,icon,textSize, handle}) => {
 
     const theme = useTheme();
     let fontSize = variant==='lg'?"16px":"14px";
@@ -28,6 +28,6 @@ export const Button = ({content,link,variant,icon,textSize}) => {
       };
   
     return (
-    <button style={buttonStyles} >{icon} {content}</button>
+    <button style={buttonStyles} onClick={handle}>{icon} {content}</button>
   )
 }

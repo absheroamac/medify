@@ -8,7 +8,7 @@ export const MenuItem = ({title,value,current}) => {
   return (
     <Box display={'flex'} flexDirection={'column'} justifyContent={'space-between'} height={'100%'} gap={4}>
       <Link sx={{color,fontSize:'14px'}} underline='none'>{title}</Link>
-      {active && <Box width={'100%'} height={'6px'} sx={{backgroundColor:'primary.main'}}></Box>}
+      {<Box width={'100%'} height={'6px'} sx={{backgroundColor:active ?'primary.main':'white.primary'}}></Box>}
       
     </Box>
   )

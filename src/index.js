@@ -10,6 +10,7 @@ import { Landing } from './pages/Landing';
 import theme from "./helpers/Theme";
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
+import { Bookings } from './pages/Bookings';
 
 
 const router = createBrowserRouter([
@@ -22,8 +23,11 @@ const router = createBrowserRouter([
         element:<Landing/>
       },
       {
-        path:"/search",
+        path:"/search/:State?/:City?",
         element:<Search/>
+      },{
+        path:"/bookings",
+        element:<Bookings/>
       }
     ]
   },

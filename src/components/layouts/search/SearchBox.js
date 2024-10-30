@@ -6,10 +6,10 @@ import { AutoCompleteInput } from '../landingPage/AutoCompleteInput';
 import axios from 'axios';
 
 
-export const SearchBox = () => {
+export const SearchBox = ({setCity,setState,state,handleSearch}) => {
+  
 
-    const [state,setState] = useState("");
-    const [city,setCity] = useState("");
+    
     const [cityList,setCityList] = useState([]);
     const [stateList,setStateList] = useState([]);
     const searchIcon = <SearchIcon style={{ color: 'white' }} />
@@ -24,7 +24,7 @@ export const SearchBox = () => {
         const apiRequest = async ()=>{
             axios.get(GET_STATE_URL)
           .then(function (response) {
-            console.log(response.data);
+            
             setStateList(response.data);
           })
           .catch(function (error) {
@@ -41,7 +41,7 @@ export const SearchBox = () => {
             const apiRequest = async ()=>{
                 axios.get(GET_CITY_URL)
               .then(function (response) {
-                console.log(response.data);
+                
                 setCityList(response.data);
               })
               .catch(function (error) {
@@ -63,7 +63,7 @@ export const SearchBox = () => {
         <Box p={3} borderRadius={4} display={'flex'} justifyContent={'center'} gap={3} zIndex={1} sx={{backgroundColor:'white.main',position:'absolute', width:'100%',top:'4rem'}}>
             <AutoCompleteInput data={stateList} placeholder={"State"} setInput={setState}/>
             <AutoCompleteInput data={cityList} placeholder={"City"} setInput={setCity}/>
-            <Button variant={"lg"} content={"Search"} icon={searchIcon}/>
+            <Button variant={"lg"} content={"Search"} icon={searchIcon} handle={handleSearch}/>
         </Box>
         </Container>
     </Box>
