@@ -52,7 +52,7 @@ export const HospitalCard = ({ id = 1, data, variant, time, date }) => {
         <Box width={"15%"}>
           <img src={Icon} style={{ width: "100%" }} />
         </Box>
-        <Box width={"50%"}>
+        <Box width={"50%"} sx={{ width: { xs: "100%", lg: "50%" } }}>
           <Typography
             variant="h2"
             sx={{ fontSize: "20px", color: "primary.main" }}
